@@ -1,22 +1,11 @@
 #!/usr/bin/env python3
 import random, sys, math
 
-while True:
-    print('Are you ready to play rock, paper, scissors?')
-    print('Yes: Type (y); No: Type (n)')
-    answer_boolean = input()
-    if answer_boolean == 'y':
-        break
-    elif answer_boolean == 'n':
-        sys(exit)
-
-
+wins = 0
+losses = 0
+ties = 0
 
 def getmove ():
-    wins = 0
-    losses = 0
-    ties = 0
-
     print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
     while True: # The player input loop.
         print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
@@ -27,13 +16,16 @@ def getmove ():
 
         if player_move == 'r':
             print('ROCK versus ...')
-            computermove()
+            move = computermove()
+            computerversusplayer(player_move, move)
             break
 
         elif player_move == 'p':
             print('PAPER versus ...')
-            computermove()
+            move = computermove()
+            computerversusplayer(player_move, move)
             break
+
         elif player_move == 's':
             print('SCISSOR versus ...')
             move = computermove()
@@ -59,7 +51,7 @@ def computermove ():
 
 def computerversusplayer(player_move, computer_move):
     if player_move == computer_move:
-        rint('It is a tie!')
+        print('It is a tie!')
         ties = ties + 1
 
     elif player_move == 'r' and computer_move == 's':
@@ -87,5 +79,14 @@ def computerversusplayer(player_move, computer_move):
         print('You lose!')
         losses = losses + 1
 
-getmove()
-
+while True:
+    print('Are you ready to play rock, paper, scissors?')
+    print('Yes: Type (y); No: Type (n)')
+    answer_boolean = input()
+    if answer_boolean == 'y':
+        getmove()
+        break
+    elif answer_boolean == 'n':
+        sys(exit)
+    else:
+        print('Pleas Type in (y) or (n)')
