@@ -47,40 +47,35 @@ def computermove ():
         return computer_move
 
 def computerversusplayer(player_move, computer_move):
-    ties = 0
-    losses = 0
-    win = 0
-
     if player_move == computer_move:
         print('It is a tie!')
         ties = ties + 1
+        return 0,0,1
 
     elif player_move == 'r' and computer_move == 's':
         print('You win!')
-        win = win + 1
+        return 1,0,0
 
     elif player_move == 'p' and computer_move == 'r':
         print('You win!')
-        win = win + 1
+        return 1,0,0
 
     elif player_move == 's' and computer_move == 'p':
         print('You win!')
-        win = win + 1
-
+        return 1,0,0
 
     elif player_move == 'r' and computer_move == 'p':
         print('You lose!')
-        losses = losses + 1
-
+        return 0,1,0
     elif player_move == 'p' and computer_move == 's':
         print('You lose!')
-        losses = losses + 1
+        return 0,1,0
 
     elif player_move == 's' and computer_move == 'r':
         print('You lose!')
-        losses = losses + 1
-
-    return wins, losses, ties
+        return 0,1,0
+    else:
+        return 0,0,0
 
 while True:
     wins = 0
