@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 import random, sys, math
 
-wins = 0
-losses = 0
-ties = 0
 
 def getmove ():
     print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
@@ -17,19 +14,19 @@ def getmove ():
         if player_move == 'r':
             print('ROCK versus ...')
             move = computermove()
-            computerversusplayer(player_move, move)
+            return computerversusplayer(player_move, move)
             break
 
         elif player_move == 'p':
             print('PAPER versus ...')
             move = computermove()
-            computerversusplayer(player_move, move)
+            return computerversusplayer(player_move, move)
             break
 
         elif player_move == 's':
             print('SCISSOR versus ...')
             move = computermove()
-            computerversusplayer(player_move, move)
+            return computerversusplayer(player_move, move)
             break
 
 
@@ -50,6 +47,10 @@ def computermove ():
         return computer_move
 
 def computerversusplayer(player_move, computer_move):
+    ties = 0
+    losses = 0
+    win = 0
+
     if player_move == computer_move:
         print('It is a tie!')
         ties = ties + 1
@@ -79,12 +80,20 @@ def computerversusplayer(player_move, computer_move):
         print('You lose!')
         losses = losses + 1
 
+    return wins, losses, ties
+
 while True:
+    wins = 0
+    losses = 0
+    ties = 0
     print('Are you ready to play rock, paper, scissors?')
     print('Yes: Type (y); No: Type (n)')
     answer_boolean = input()
     if answer_boolean == 'y':
-        getmove()
+        win_new, losses_new, tie_new = getmove()
+        wins = wins + win_new
+        losses = losses + losses_new
+        ties = ties + tie_new
         break
     elif answer_boolean == 'n':
         sys(exit)
