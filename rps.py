@@ -1,4 +1,4 @@
-#!/usr/env/bin python3
+#!/usr/bin/env python3
 import random, sys, math
 
 while True:
@@ -36,22 +36,23 @@ def getmove ():
             break
         elif player_move == 's':
             print('SCISSOR versus ...')
-            computermove()
+            move = computermove()
+            computerversusplayer(player_move, move)
             break
 
 
 def computermove ():
     random_number = random.randint(1, 3)
-    if random_number == '1':
+    if random_number == 1:
         computer_move = 'r'
         print('ROCK')
         return computer_move
 
-    elif random_number == '2':
+    elif random_number == 2:
         computer_move = 'p'
         print('PAPER')
         return computer_move
-    elif random_number == '3':
+    elif random_number == 3:
         computer_move = 's'
         print('SCISSOR')
         return computer_move
