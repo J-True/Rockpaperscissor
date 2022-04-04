@@ -3,7 +3,7 @@ import random, sys, math
 
 
 def getmove ():
-    print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
+
     while True: # The player input loop.
         print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
         player_move = input()
@@ -49,7 +49,6 @@ def computermove ():
 def computerversusplayer(player_move, computer_move):
     if player_move == computer_move:
         print('It is a tie!')
-        ties = ties + 1
         return 0,0,1
 
     elif player_move == 'r' and computer_move == 's':
@@ -77,19 +76,19 @@ def computerversusplayer(player_move, computer_move):
     else:
         return 0,0,0
 
-while True:
-    wins = 0
-    losses = 0
-    ties = 0
-    print('Are you ready to play rock, paper, scissors?')
-    print('Yes: Type (y); No: Type (n)')
-    answer_boolean = input()
+print('Are you ready to play rock, paper, scissors?')
+answer_boolean = input('Yes: Type (y); No: Type (n)')
+wins = 0
+losses = 0
+ties = 0
+for i in range(int(input('How many games do you want to play? '))):
     if answer_boolean == 'y':
         win_new, losses_new, tie_new = getmove()
         wins = wins + win_new
         losses = losses + losses_new
         ties = ties + tie_new
-        break
+        print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
+
     elif answer_boolean == 'n':
         sys(exit)
     else:
